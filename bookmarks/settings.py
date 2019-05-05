@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     #3rd party app
     'social_django',
     'images.apps.ImagesConfig',
+    'sorl.thumbnail',
 
 ]
 
