@@ -46,11 +46,11 @@ def register(request):
             #save the user object
             new_user.save()
             #create the user profile
-            Profile.objects.create(user=new_user)
+            profile = Profile.objects.create(user=new_user)
             return render(request, 'account/register_done.html', {'new_user': new_user})
 
-        else:
-            user_form = UserRegistrationForm()
+    else:
+        user_form = UserRegistrationForm()
     return render(request, 'account/register.html', {'user_form': user_form})
 
 @login_required

@@ -25,8 +25,7 @@ SECRET_KEY = 'ez7znaxz#8o)oh5y%es_(vwbi-(0lbhll^lam56#v$=u*^$fs&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -38,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #3rd party app
+    'social_django',
 
 ]
 
@@ -67,6 +68,13 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+AUTHENTICATION_BACKENDS = [
+'social_core.backends.facebook.FacebookOAuth2',
+'django.contrib.auth.backends.ModelBackend',
+'account.authentication.EmailAuthBackend',
+'social_core.backends.twitter.TwitterOAuth',
 ]
 
 WSGI_APPLICATION = 'bookmarks.wsgi.application'
@@ -102,6 +110,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+SOCIAL_AUTH_FACEBOOK_KEY = '396367514288847'
+SOCIAL_AUTH_FACEBOOK_SECRET = '3e42512c0a81251928ef66d9e3e8e99d'
+
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
@@ -126,7 +137,3 @@ LOGOUT_URL = 'logout'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-AUTHENTICATION_BACKENDS = [
-'django.contrib.auth.backends.ModelBackend',
-'account.authentication.EmailAuthBackend',
-]
